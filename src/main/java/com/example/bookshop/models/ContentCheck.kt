@@ -1,15 +1,25 @@
 package com.example.bookshop.models
 
-class ContentVerifier(
+class ContentCheck(
     private val censor: Censor,
+    private val translator: Translator,
 ) {
-    fun verifyBookContent(content: String): String {
+    fun check(content: String): String {
+        var result = translate(content,"VN")
+        result = censor(result)
+        return result
+    }
+
+
+    private fun censor(content: String): String {
         val censorResult = censor.handle(content)
-        val content: String = when (censorResult) {
+        return when (censorResult) {
             is CensorResult.Censored -> censorResult.newContent
             is CensorResult.NoCensor -> content
             is CensorResult.Banned -> throw TheTitleHasBeenBannedException(censorResult.reason)
         }
-        return content
+    }
+    private fun translate(content: String, locale: String): String {
+        TODO("Not yet implemented")
     }
 }

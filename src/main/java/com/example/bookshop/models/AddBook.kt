@@ -1,4 +1,3 @@
 package com.example.bookshop.models
 
-class AddBook {
-}
+data class AddBook(val title: String, val content: String)

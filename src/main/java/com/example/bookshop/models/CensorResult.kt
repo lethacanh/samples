@@ -1,12 +1,10 @@
 package com.example.bookshop.models
 
-open class CensorResult {
+sealed class CensorResult {
     inner class NoCensor : CensorResult()
-    inner class Censored : CensorResult() {
-        var newContent: String? = null
+    inner class Censored(val newContent: String) : CensorResult() {
     }
 
-    inner class Banned : CensorResult() {
-        var reason: String? = null
+    inner class Banned(var reason: String) : CensorResult() {
     }
 }
