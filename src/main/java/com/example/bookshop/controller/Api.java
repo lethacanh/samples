@@ -1,6 +1,6 @@
 package com.example.bookshop.controller;
 
-import com.example.bookshop.models.DefineBookHandler;
+import com.example.bookshop.usecases.DefineBookHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

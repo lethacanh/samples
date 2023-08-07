@@ -1,4 +1,4 @@
-package com.example.bookshop.models.core;
+package com.example.bookshop.models.domain;
 
 public class Book {
     String id;

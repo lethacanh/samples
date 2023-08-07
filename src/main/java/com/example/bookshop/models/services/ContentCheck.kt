@@ -1,4 +1,6 @@
-package com.example.bookshop.models
+package com.example.bookshop.models.services
+
+import com.example.bookshop.models.services.Censor.CensorResult.*
 
 class ContentCheck(
     private val censor: Censor,
@@ -13,12 +15,15 @@ class ContentCheck(
     private fun censor(content: String): String {
         val censorResult = censor.handle(content)
         return when (censorResult) {
-            is CensorResult.Censored -> censorResult.newContent
-            is CensorResult.NoCensor -> content
-            is CensorResult.Banned -> throw TheTitleHasBeenBannedException(censorResult.reason)
+            is Censored -> censorResult.newContent
+            is NoCensor -> content
+            is Banned -> throw TheTitleHasBeenBannedException(censorResult.reason)
         }
     }
     private fun translate(content: String, locale: String): String {
         TODO("Not yet implemented")
     }
+
+    class TheTitleHasBeenBannedException(reason: String) : RuntimeException()
+
 }
