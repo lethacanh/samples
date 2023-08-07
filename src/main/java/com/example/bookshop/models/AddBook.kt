@@ -1,3 +1,5 @@
 package com.example.bookshop.models
 
-data class AddBook(val title: String, val content: String)
+import com.example.bookshop.models.core.Money
+
+data class AddBook(val title: String, val content: String, val price: Money)

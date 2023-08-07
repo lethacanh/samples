@@ -2,7 +2,6 @@ package com.example.bookshop.models
 
 class ContentCheck(
     private val censor: Censor,
-    private val translator: Translator,
 ) {
     fun check(content: String): String {
         var result = translate(content,"VN")
